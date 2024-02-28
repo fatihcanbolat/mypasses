@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "637583391274",
+    "project_id": "mypass-79297",
+    "storage_bucket": "mypass-79297.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637583391274:android:db6cd4f0d17efb7613a153",
+        "android_client_info": {
+          "package_name": "com.fatihcan.mypass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEgTYQzzNjdxb7A8MKxtJVMWAfKoqo3Bc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
