@@ -40,12 +40,18 @@ class PassesRecord extends FirestoreRecord {
   String get aciklama => _aciklama ?? '';
   bool hasAciklama() => _aciklama != null;
 
+  // "userid" field.
+  String? _userid;
+  String get userid => _userid ?? '';
+  bool hasUserid() => _userid != null;
+
   void _initializeFields() {
     _hesapAdi = snapshotData['hesapAdi'] as String?;
     _url = snapshotData['url'] as String?;
     _kullaniciAdi = snapshotData['kullaniciAdi'] as String?;
     _sifre = snapshotData['sifre'] as String?;
     _aciklama = snapshotData['aciklama'] as String?;
+    _userid = snapshotData['userid'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -87,6 +93,7 @@ Map<String, dynamic> createPassesRecordData({
   String? kullaniciAdi,
   String? sifre,
   String? aciklama,
+  String? userid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -95,6 +102,7 @@ Map<String, dynamic> createPassesRecordData({
       'kullaniciAdi': kullaniciAdi,
       'sifre': sifre,
       'aciklama': aciklama,
+      'userid': userid,
     }.withoutNulls,
   );
 
@@ -110,12 +118,13 @@ class PassesRecordDocumentEquality implements Equality<PassesRecord> {
         e1?.url == e2?.url &&
         e1?.kullaniciAdi == e2?.kullaniciAdi &&
         e1?.sifre == e2?.sifre &&
-        e1?.aciklama == e2?.aciklama;
+        e1?.aciklama == e2?.aciklama &&
+        e1?.userid == e2?.userid;
   }
 
   @override
-  int hash(PassesRecord? e) => const ListEquality()
-      .hash([e?.hesapAdi, e?.url, e?.kullaniciAdi, e?.sifre, e?.aciklama]);
+  int hash(PassesRecord? e) => const ListEquality().hash(
+      [e?.hesapAdi, e?.url, e?.kullaniciAdi, e?.sifre, e?.aciklama, e?.userid]);
 
   @override
   bool isValidKey(Object? o) => o is PassesRecord;

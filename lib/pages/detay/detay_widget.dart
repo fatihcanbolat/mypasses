@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -131,8 +132,6 @@ class _DetayWidgetState extends State<DetayWidget> {
                             child: TextFormField(
                               controller: _model.hesapAdiController,
                               focusNode: _model.hesapAdiFocusNode,
-                              autofocus: true,
-                              readOnly: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelStyle:
@@ -207,7 +206,6 @@ class _DetayWidgetState extends State<DetayWidget> {
                             child: TextFormField(
                               controller: _model.urlController,
                               focusNode: _model.urlFocusNode,
-                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelStyle:
@@ -286,7 +284,6 @@ class _DetayWidgetState extends State<DetayWidget> {
                                   child: TextFormField(
                                     controller: _model.kullaniciAdiController,
                                     focusNode: _model.kullaniciAdiFocusNode,
-                                    autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
@@ -395,7 +392,6 @@ class _DetayWidgetState extends State<DetayWidget> {
                                   child: TextFormField(
                                     controller: _model.sifreController,
                                     focusNode: _model.sifreFocusNode,
-                                    autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
@@ -498,7 +494,6 @@ class _DetayWidgetState extends State<DetayWidget> {
                             child: TextFormField(
                               controller: _model.aciklamaController,
                               focusNode: _model.aciklamaFocusNode,
-                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelStyle:
@@ -558,6 +553,7 @@ class _DetayWidgetState extends State<DetayWidget> {
                           kullaniciAdi: _model.kullaniciAdiController.text,
                           sifre: _model.sifreController.text,
                           aciklama: _model.aciklamaController.text,
+                          userid: currentUserUid,
                         ));
 
                         context.pushNamed('hesap');

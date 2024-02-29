@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -482,6 +483,7 @@ class _EkleWidgetState extends State<EkleWidget> {
                               kullaniciAdi: _model.kullaniciAdiController.text,
                               sifre: _model.sifreController.text,
                               aciklama: _model.aciklamaController.text,
+                              userid: currentUserUid,
                             ));
 
                         context.pushNamed('hesap');

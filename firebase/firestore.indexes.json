@@ -1,3 +1,18 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "passes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "hesapAdi",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

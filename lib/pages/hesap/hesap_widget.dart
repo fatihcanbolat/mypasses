@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'hesap_model.dart';
 export 'hesap_model.dart';
 
@@ -142,13 +143,41 @@ class _HesapWidgetState extends State<HesapWidget> {
                   ),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 0.9,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Şifrelerim',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
                   child: StreamBuilder<List<PassesRecord>>(
                     stream: queryPassesRecord(
-                      queryBuilder: (passesRecord) =>
-                          passesRecord.orderBy('hesapAdi'),
+                      queryBuilder: (passesRecord) => passesRecord
+                          .where(
+                            'userid',
+                            isEqualTo: currentUserUid,
+                          )
+                          .orderBy('hesapAdi'),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -201,31 +230,90 @@ class _HesapWidgetState extends State<HesapWidget> {
                                               .bodyMedium,
                                         ),
                                       ),
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'detay',
-                                            queryParameters: {
-                                              'passDetay': serializeParam(
-                                                listViewPassesRecord,
-                                                ParamType.Document,
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Builder(
+                                            builder: (context) => Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 20.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await Share.share(
+                                                    'Hesap Türü:${listViewPassesRecord.hesapAdi}Site Adresi: ${listViewPassesRecord.url}Kullanıcı Adı:${listViewPassesRecord.kullaniciAdi}Şifre: ${listViewPassesRecord.sifre}Açıklama:${listViewPassesRecord.aciklama}',
+                                                    sharePositionOrigin:
+                                                        getWidgetBoundingBox(
+                                                            context),
+                                                  );
+                                                },
+                                                child: Icon(
+                                                  Icons.share,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
                                               ),
-                                            }.withoutNulls,
-                                            extra: <String, dynamic>{
-                                              'passDetay': listViewPassesRecord,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 20.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await launchURL(
+                                                    listViewPassesRecord.url);
+                                              },
+                                              child: Icon(
+                                                Icons.link,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                          ),
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'detay',
+                                                queryParameters: {
+                                                  'passDetay': serializeParam(
+                                                    listViewPassesRecord,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'passDetay':
+                                                      listViewPassesRecord,
+                                                },
+                                              );
                                             },
-                                          );
-                                        },
-                                        child: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
+                                            child: Icon(
+                                              Icons.arrow_forward_ios,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
