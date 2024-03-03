@@ -7,6 +7,7 @@ import '/backend/backend.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -72,13 +73,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomeWidget() : const GirisWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const GirisWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomeWidget() : const GirisWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const GirisWidget(),
         ),
         FFRoute(
           name: 'giris',
@@ -88,7 +89,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'passes',
           path: '/passes',
-          builder: (context, params) => const PassesWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'passes')
+              : const PassesWidget(),
         ),
         FFRoute(
           name: 'ekle',
@@ -108,7 +111,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'home',
           path: '/home',
-          builder: (context, params) => const HomeWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'home') : const HomeWidget(),
+        ),
+        FFRoute(
+          name: 'todos',
+          path: '/todos',
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'todos') : const TodosWidget(),
+        ),
+        FFRoute(
+          name: 'numgen',
+          path: '/numgen',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'numgen')
+              : const NumgenWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

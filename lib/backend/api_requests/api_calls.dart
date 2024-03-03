@@ -38,6 +38,39 @@ class YakitapiCall {
       ));
 }
 
+class SayiUretCall {
+  static Future<ApiCallResponse> call({
+    int? ilksayi = 1,
+    int? sonsayi = 90,
+    int? sayiadedi = 7,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'sayiUret',
+      apiUrl: 'http://fatura.egenakliyat.com/online/server/toolsaction.php',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'ilksayi': ilksayi,
+        'sonsayi': sonsayi,
+        'sayiadedi': sayiadedi,
+        'sayiUret': true,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? sayiuret(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+        true,
+      ) as List?;
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

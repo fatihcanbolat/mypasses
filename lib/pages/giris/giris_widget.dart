@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -23,20 +24,23 @@ class _GirisWidgetState extends State<GirisWidget> {
     super.initState();
     _model = createModel(context, () => GirisModel());
 
-    _model.loginMailController1 ??= TextEditingController();
-    _model.loginMailFocusNode1 ??= FocusNode();
+    _model.loginMailController ??= TextEditingController();
+    _model.loginMailFocusNode ??= FocusNode();
 
-    _model.loginPassController1 ??= TextEditingController();
-    _model.loginPassFocusNode1 ??= FocusNode();
+    _model.loginPassController ??= TextEditingController();
+    _model.loginPassFocusNode ??= FocusNode();
 
-    _model.loginMailController2 ??= TextEditingController();
-    _model.loginMailFocusNode2 ??= FocusNode();
+    _model.regsiterNameController ??= TextEditingController();
+    _model.regsiterNameFocusNode ??= FocusNode();
 
-    _model.loginPassController2 ??= TextEditingController();
-    _model.loginPassFocusNode2 ??= FocusNode();
+    _model.registerMailController ??= TextEditingController();
+    _model.registerMailFocusNode ??= FocusNode();
 
-    _model.loginPassConfirmController ??= TextEditingController();
-    _model.loginPassConfirmFocusNode ??= FocusNode();
+    _model.registerPassController ??= TextEditingController();
+    _model.registerPassFocusNode ??= FocusNode();
+
+    _model.registerPassConfirmController ??= TextEditingController();
+    _model.registerPassConfirmFocusNode ??= FocusNode();
   }
 
   @override
@@ -177,8 +181,8 @@ class _GirisWidgetState extends State<GirisWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 8.0, 8.0),
                               child: TextFormField(
-                                controller: _model.loginMailController1,
-                                focusNode: _model.loginMailFocusNode1,
+                                controller: _model.loginMailController,
+                                focusNode: _model.loginMailFocusNode,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -219,7 +223,7 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.loginMailController1Validator
+                                validator: _model.loginMailControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -227,10 +231,10 @@ class _GirisWidgetState extends State<GirisWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 8.0, 8.0),
                               child: TextFormField(
-                                controller: _model.loginPassController1,
-                                focusNode: _model.loginPassFocusNode1,
+                                controller: _model.loginPassController,
+                                focusNode: _model.loginPassFocusNode,
                                 autofocus: true,
-                                obscureText: !_model.loginPassVisibility1,
+                                obscureText: !_model.loginPassVisibility,
                                 decoration: InputDecoration(
                                   labelText: 'Şifre',
                                   labelStyle:
@@ -269,12 +273,12 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
-                                      () => _model.loginPassVisibility1 =
-                                          !_model.loginPassVisibility1,
+                                      () => _model.loginPassVisibility =
+                                          !_model.loginPassVisibility,
                                     ),
                                     focusNode: FocusNode(skipTraversal: true),
                                     child: Icon(
-                                      _model.loginPassVisibility1
+                                      _model.loginPassVisibility
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
                                       size: 22,
@@ -282,7 +286,7 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.loginPassController1Validator
+                                validator: _model.loginPassControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -300,8 +304,8 @@ class _GirisWidgetState extends State<GirisWidget> {
                                       final user =
                                           await authManager.signInWithEmail(
                                         context,
-                                        _model.loginMailController1.text,
-                                        _model.loginPassController1.text,
+                                        _model.loginMailController.text,
+                                        _model.loginPassController.text,
                                       );
                                       if (user == null) {
                                         return;
@@ -365,8 +369,59 @@ class _GirisWidgetState extends State<GirisWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 8.0, 8.0),
                               child: TextFormField(
-                                controller: _model.loginMailController2,
-                                focusNode: _model.loginMailFocusNode2,
+                                controller: _model.regsiterNameController,
+                                focusNode: _model.regsiterNameFocusNode,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Adınız',
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                validator: _model
+                                    .regsiterNameControllerValidator
+                                    .asValidator(context),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 8.0, 8.0, 8.0),
+                              child: TextFormField(
+                                controller: _model.registerMailController,
+                                focusNode: _model.registerMailFocusNode,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -407,7 +462,9 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.loginMailController2Validator
+                                keyboardType: TextInputType.emailAddress,
+                                validator: _model
+                                    .registerMailControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -415,10 +472,10 @@ class _GirisWidgetState extends State<GirisWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 8.0, 8.0),
                               child: TextFormField(
-                                controller: _model.loginPassController2,
-                                focusNode: _model.loginPassFocusNode2,
+                                controller: _model.registerPassController,
+                                focusNode: _model.registerPassFocusNode,
                                 autofocus: true,
-                                obscureText: !_model.loginPassVisibility2,
+                                obscureText: !_model.registerPassVisibility,
                                 decoration: InputDecoration(
                                   labelText: 'Şifre',
                                   labelStyle:
@@ -457,12 +514,12 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
-                                      () => _model.loginPassVisibility2 =
-                                          !_model.loginPassVisibility2,
+                                      () => _model.registerPassVisibility =
+                                          !_model.registerPassVisibility,
                                     ),
                                     focusNode: FocusNode(skipTraversal: true),
                                     child: Icon(
-                                      _model.loginPassVisibility2
+                                      _model.registerPassVisibility
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
                                       size: 22,
@@ -470,7 +527,8 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.loginPassController2Validator
+                                validator: _model
+                                    .registerPassControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -478,10 +536,12 @@ class _GirisWidgetState extends State<GirisWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 8.0, 8.0, 8.0),
                               child: TextFormField(
-                                controller: _model.loginPassConfirmController,
-                                focusNode: _model.loginPassConfirmFocusNode,
+                                controller:
+                                    _model.registerPassConfirmController,
+                                focusNode: _model.registerPassConfirmFocusNode,
                                 autofocus: true,
-                                obscureText: !_model.loginPassConfirmVisibility,
+                                obscureText:
+                                    !_model.registerPassConfirmVisibility,
                                 decoration: InputDecoration(
                                   labelText: 'Şifreyi Doğrula',
                                   labelStyle:
@@ -520,12 +580,13 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
-                                      () => _model.loginPassConfirmVisibility =
-                                          !_model.loginPassConfirmVisibility,
+                                      () => _model
+                                              .registerPassConfirmVisibility =
+                                          !_model.registerPassConfirmVisibility,
                                     ),
                                     focusNode: FocusNode(skipTraversal: true),
                                     child: Icon(
-                                      _model.loginPassConfirmVisibility
+                                      _model.registerPassConfirmVisibility
                                           ? Icons.visibility_outlined
                                           : Icons.visibility_off_outlined,
                                       size: 22,
@@ -534,7 +595,7 @@ class _GirisWidgetState extends State<GirisWidget> {
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                                 validator: _model
-                                    .loginPassConfirmControllerValidator
+                                    .registerPassConfirmControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -545,9 +606,9 @@ class _GirisWidgetState extends State<GirisWidget> {
                                 FFButtonWidget(
                                   onPressed: () async {
                                     GoRouter.of(context).prepareAuthEvent();
-                                    if (_model.loginPassController2.text !=
-                                        _model
-                                            .loginPassConfirmController.text) {
+                                    if (_model.registerPassController.text !=
+                                        _model.registerPassConfirmController
+                                            .text) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         const SnackBar(
@@ -562,12 +623,19 @@ class _GirisWidgetState extends State<GirisWidget> {
                                     final user = await authManager
                                         .createAccountWithEmail(
                                       context,
-                                      _model.loginMailController2.text,
-                                      _model.loginPassController2.text,
+                                      _model.registerMailController.text,
+                                      _model.registerPassController.text,
                                     );
                                     if (user == null) {
                                       return;
                                     }
+
+                                    await UsersRecord.collection
+                                        .doc(user.uid)
+                                        .update(createUsersRecordData(
+                                          displayName: _model
+                                              .regsiterNameController.text,
+                                        ));
 
                                     context.goNamedAuth(
                                         'home', context.mounted);

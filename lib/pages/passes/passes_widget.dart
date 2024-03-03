@@ -69,18 +69,21 @@ class _PassesWidgetState extends State<PassesWidget> {
                 ),
           ),
           actions: [
-            InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                context.pushNamed('home');
-              },
-              child: Icon(
-                Icons.home,
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                size: 36.0,
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('home');
+                },
+                child: Icon(
+                  Icons.home,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  size: 36.0,
+                ),
               ),
             ),
           ],
@@ -93,66 +96,42 @@ class _PassesWidgetState extends State<PassesWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(25.0, 25.0, 25.0, 25.0),
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Sayın; ',
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed('ekle');
+                      },
+                      text: 'Ekle',
+                      icon: const Icon(
+                        Icons.add,
+                        size: 15.0,
                       ),
-                      Text(
-                        currentUserEmail,
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                ),
+                        elevation: 3.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      Text(
-                        ' Hoşgeldiniz.',
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FFButtonWidget(
-                    onPressed: () async {
-                      context.pushNamed('ekle');
-                    },
-                    text: 'Ekle',
-                    icon: const Icon(
-                      Icons.add,
-                      size: 15.0,
-                    ),
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                              ),
-                      elevation: 3.0,
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ],
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
@@ -257,7 +236,7 @@ class _PassesWidgetState extends State<PassesWidget> {
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   await Share.share(
-                                                    'Hesap Türü:${listViewPassesRecord.hesapAdi}Site Adresi: ${listViewPassesRecord.url}Kullanıcı Adı:${listViewPassesRecord.kullaniciAdi}Şifre: ${listViewPassesRecord.sifre}Açıklama:${listViewPassesRecord.aciklama}',
+                                                    'Hesap Türü:${listViewPassesRecord.hesapAdi}  Site Adresi: ${listViewPassesRecord.url}  Kullanıcı Adı:${listViewPassesRecord.kullaniciAdi}  Şifre: ${listViewPassesRecord.sifre}  Açıklama:${listViewPassesRecord.aciklama}',
                                                     sharePositionOrigin:
                                                         getWidgetBoundingBox(
                                                             context),

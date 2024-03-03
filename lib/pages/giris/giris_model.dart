@@ -13,55 +13,63 @@ class GirisModel extends FlutterFlowModel<GirisWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for login_mail widget.
-  FocusNode? loginMailFocusNode1;
-  TextEditingController? loginMailController1;
-  String? Function(BuildContext, String?)? loginMailController1Validator;
+  FocusNode? loginMailFocusNode;
+  TextEditingController? loginMailController;
+  String? Function(BuildContext, String?)? loginMailControllerValidator;
   // State field(s) for login_pass widget.
-  FocusNode? loginPassFocusNode1;
-  TextEditingController? loginPassController1;
-  late bool loginPassVisibility1;
-  String? Function(BuildContext, String?)? loginPassController1Validator;
-  // State field(s) for login_mail widget.
-  FocusNode? loginMailFocusNode2;
-  TextEditingController? loginMailController2;
-  String? Function(BuildContext, String?)? loginMailController2Validator;
-  // State field(s) for login_pass widget.
-  FocusNode? loginPassFocusNode2;
-  TextEditingController? loginPassController2;
-  late bool loginPassVisibility2;
-  String? Function(BuildContext, String?)? loginPassController2Validator;
-  // State field(s) for login_pass_confirm widget.
-  FocusNode? loginPassConfirmFocusNode;
-  TextEditingController? loginPassConfirmController;
-  late bool loginPassConfirmVisibility;
-  String? Function(BuildContext, String?)? loginPassConfirmControllerValidator;
+  FocusNode? loginPassFocusNode;
+  TextEditingController? loginPassController;
+  late bool loginPassVisibility;
+  String? Function(BuildContext, String?)? loginPassControllerValidator;
+  // State field(s) for regsiter_name widget.
+  FocusNode? regsiterNameFocusNode;
+  TextEditingController? regsiterNameController;
+  String? Function(BuildContext, String?)? regsiterNameControllerValidator;
+  // State field(s) for register_mail widget.
+  FocusNode? registerMailFocusNode;
+  TextEditingController? registerMailController;
+  String? Function(BuildContext, String?)? registerMailControllerValidator;
+  // State field(s) for register_pass widget.
+  FocusNode? registerPassFocusNode;
+  TextEditingController? registerPassController;
+  late bool registerPassVisibility;
+  String? Function(BuildContext, String?)? registerPassControllerValidator;
+  // State field(s) for register_pass_confirm widget.
+  FocusNode? registerPassConfirmFocusNode;
+  TextEditingController? registerPassConfirmController;
+  late bool registerPassConfirmVisibility;
+  String? Function(BuildContext, String?)?
+      registerPassConfirmControllerValidator;
 
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
-    loginPassVisibility1 = false;
-    loginPassVisibility2 = false;
-    loginPassConfirmVisibility = false;
+    loginPassVisibility = false;
+    registerPassVisibility = false;
+    registerPassConfirmVisibility = false;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    loginMailFocusNode1?.dispose();
-    loginMailController1?.dispose();
+    loginMailFocusNode?.dispose();
+    loginMailController?.dispose();
 
-    loginPassFocusNode1?.dispose();
-    loginPassController1?.dispose();
+    loginPassFocusNode?.dispose();
+    loginPassController?.dispose();
 
-    loginMailFocusNode2?.dispose();
-    loginMailController2?.dispose();
+    regsiterNameFocusNode?.dispose();
+    regsiterNameController?.dispose();
 
-    loginPassFocusNode2?.dispose();
-    loginPassController2?.dispose();
+    registerMailFocusNode?.dispose();
+    registerMailController?.dispose();
 
-    loginPassConfirmFocusNode?.dispose();
-    loginPassConfirmController?.dispose();
+    registerPassFocusNode?.dispose();
+    registerPassController?.dispose();
+
+    registerPassConfirmFocusNode?.dispose();
+    registerPassConfirmController?.dispose();
   }
 
   /// Action blocks are added here.
