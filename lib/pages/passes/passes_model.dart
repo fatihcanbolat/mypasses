@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'hesap_widget.dart' show HesapWidget;
+import 'passes_widget.dart' show PassesWidget;
 import 'package:flutter/material.dart';
 
-class HesapModel extends FlutterFlowModel<HesapWidget> {
+class PassesModel extends FlutterFlowModel<PassesWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

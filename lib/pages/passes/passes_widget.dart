@@ -1,29 +1,30 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
-import 'hesap_model.dart';
-export 'hesap_model.dart';
+import 'passes_model.dart';
+export 'passes_model.dart';
 
-class HesapWidget extends StatefulWidget {
-  const HesapWidget({super.key});
+class PassesWidget extends StatefulWidget {
+  const PassesWidget({super.key});
 
   @override
-  State<HesapWidget> createState() => _HesapWidgetState();
+  State<PassesWidget> createState() => _PassesWidgetState();
 }
 
-class _HesapWidgetState extends State<HesapWidget> {
-  late HesapModel _model;
+class _PassesWidgetState extends State<PassesWidget> {
+  late PassesModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HesapModel());
+    _model = createModel(context, () => PassesModel());
   }
 
   @override
@@ -45,6 +46,20 @@ class _HesapWidgetState extends State<HesapWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
+            borderWidth: 1.0,
+            buttonSize: 60.0,
+            icon: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.pop();
+            },
+          ),
           title: Text(
             'My Passwords',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -60,15 +75,11 @@ class _HesapWidgetState extends State<HesapWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
-                GoRouter.of(context).prepareAuthEvent();
-                await authManager.signOut();
-                GoRouter.of(context).clearRedirectLocation();
-
-                context.goNamedAuth('giris', context.mounted);
+                context.pushNamed('home');
               },
               child: Icon(
-                Icons.power_settings_new,
-                color: FlutterFlowTheme.of(context).alternate,
+                Icons.home,
+                color: FlutterFlowTheme.of(context).primaryBackground,
                 size: 36.0,
               ),
             ),

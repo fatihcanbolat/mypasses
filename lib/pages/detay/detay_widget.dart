@@ -556,7 +556,7 @@ class _DetayWidgetState extends State<DetayWidget> {
                           userid: currentUserUid,
                         ));
 
-                        context.pushNamed('hesap');
+                        context.pushNamed('passes');
                       },
                       text: 'Güncelle',
                       options: FFButtonOptions(
@@ -583,7 +583,7 @@ class _DetayWidgetState extends State<DetayWidget> {
                       onPressed: () async {
                         await widget.passDetay!.reference.delete();
 
-                        context.pushNamed('hesap');
+                        context.pushNamed('passes');
                       },
                       text: 'Sil',
                       options: FFButtonOptions(

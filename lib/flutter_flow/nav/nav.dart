@@ -72,13 +72,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HesapWidget() : const GirisWidget(),
+          appStateNotifier.loggedIn ? const HomeWidget() : const GirisWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HesapWidget() : const GirisWidget(),
+              appStateNotifier.loggedIn ? const HomeWidget() : const GirisWidget(),
         ),
         FFRoute(
           name: 'giris',
@@ -86,9 +86,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const GirisWidget(),
         ),
         FFRoute(
-          name: 'hesap',
-          path: '/hesap',
-          builder: (context, params) => const HesapWidget(),
+          name: 'passes',
+          path: '/passes',
+          builder: (context, params) => const PassesWidget(),
         ),
         FFRoute(
           name: 'ekle',
@@ -104,6 +104,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => DetayWidget(
             passDetay: params.getParam('passDetay', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'home',
+          path: '/home',
+          builder: (context, params) => const HomeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -288,7 +293,7 @@ class FFRoute {
                   color: Colors.transparent,
                   child: Image.asset(
                     'assets/images/unnamed.png',
-                    fit: BoxFit.contain,
+                    fit: BoxFit.scaleDown,
                   ),
                 )
               : page;

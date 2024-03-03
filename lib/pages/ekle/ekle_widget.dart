@@ -486,7 +486,7 @@ class _EkleWidgetState extends State<EkleWidget> {
                               userid: currentUserUid,
                             ));
 
-                        context.pushNamed('hesap');
+                        context.pushNamed('passes');
                       },
                       text: 'Ekle',
                       options: FFButtonOptions(
@@ -511,7 +511,7 @@ class _EkleWidgetState extends State<EkleWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('hesap');
+                        context.pushNamed('passes');
                       },
                       text: 'Vazgeç',
                       options: FFButtonOptions(
