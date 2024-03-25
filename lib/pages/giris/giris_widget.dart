@@ -223,6 +223,7 @@ class _GirisWidgetState extends State<GirisWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
+                                keyboardType: TextInputType.emailAddress,
                                 validator: _model.loginMailControllerValidator
                                     .asValidator(context),
                               ),
@@ -422,7 +423,6 @@ class _GirisWidgetState extends State<GirisWidget> {
                               child: TextFormField(
                                 controller: _model.registerMailController,
                                 focusNode: _model.registerMailFocusNode,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'E-Posta',
@@ -474,7 +474,6 @@ class _GirisWidgetState extends State<GirisWidget> {
                               child: TextFormField(
                                 controller: _model.registerPassController,
                                 focusNode: _model.registerPassFocusNode,
-                                autofocus: true,
                                 obscureText: !_model.registerPassVisibility,
                                 decoration: InputDecoration(
                                   labelText: 'Şifre',
@@ -539,7 +538,6 @@ class _GirisWidgetState extends State<GirisWidget> {
                                 controller:
                                     _model.registerPassConfirmController,
                                 focusNode: _model.registerPassConfirmFocusNode,
-                                autofocus: true,
                                 obscureText:
                                     !_model.registerPassConfirmVisibility,
                                 decoration: InputDecoration(

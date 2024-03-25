@@ -425,6 +425,7 @@ class _TodosWidgetState extends State<TodosWidget> {
                                 snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
+                              primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: listViewTodosRecordList.length,
@@ -679,6 +680,7 @@ class _TodosWidgetState extends State<TodosWidget> {
                                 snapshot.data!;
                             return ListView.builder(
                               padding: EdgeInsets.zero,
+                              primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: listViewTodosRecordList.length,

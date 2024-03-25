@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'passes_widget.dart' show PassesWidget;
+import 'araclar_widget.dart' show AraclarWidget;
 import 'package:flutter/material.dart';
 
-class PassesModel extends FlutterFlowModel<PassesWidget> {
+class AraclarModel extends FlutterFlowModel<AraclarWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

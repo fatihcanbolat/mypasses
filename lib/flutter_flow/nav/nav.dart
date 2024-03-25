@@ -123,9 +123,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'numgen',
           path: '/numgen',
+          builder: (context, params) => const NavBarPage(
+            initialPage: '',
+            page: NumgenWidget(),
+          ),
+        ),
+        FFRoute(
+          name: 'mynotes',
+          path: '/mynotes',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'numgen')
-              : const NumgenWidget(),
+              ? const NavBarPage(initialPage: 'mynotes')
+              : const MynotesWidget(),
+        ),
+        FFRoute(
+          name: 'araclar',
+          path: '/araclar',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'araclar')
+              : const AraclarWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

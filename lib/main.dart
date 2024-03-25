@@ -82,9 +82,11 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
+        useMaterial3: false,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        useMaterial3: false,
       ),
       themeMode: _themeMode,
       routerConfig: _router,
@@ -120,7 +122,8 @@ class _NavBarPageState extends State<NavBarPage> {
       'home': const HomeWidget(),
       'passes': const PassesWidget(),
       'todos': const TodosWidget(),
-      'numgen': const NumgenWidget(),
+      'mynotes': const MynotesWidget(),
+      'araclar': const AraclarWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -139,10 +142,10 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         selectedItemColor: FlutterFlowTheme.of(context).primary,
-        unselectedItemColor: const Color(0x8A000000),
-        selectedBackgroundColor: const Color(0x00000000),
+        unselectedItemColor: FlutterFlowTheme.of(context).primaryText,
+        selectedBackgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         borderRadius: 8.0,
         itemBorderRadius: 8.0,
         margin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
@@ -158,7 +161,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icons.home_outlined,
                   color: currentIndex == 0
                       ? FlutterFlowTheme.of(context).primary
-                      : const Color(0x8A000000),
+                      : FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
                 Text(
@@ -167,7 +170,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: currentIndex == 0
                         ? FlutterFlowTheme.of(context).primary
-                        : const Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).primaryText,
                     fontSize: 11.0,
                   ),
                 ),
@@ -182,7 +185,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icons.key,
                   color: currentIndex == 1
                       ? FlutterFlowTheme.of(context).primary
-                      : const Color(0x8A000000),
+                      : FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
                 Text(
@@ -191,7 +194,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: currentIndex == 1
                         ? FlutterFlowTheme.of(context).primary
-                        : const Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).primaryText,
                     fontSize: 11.0,
                   ),
                 ),
@@ -206,7 +209,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   Icons.list,
                   color: currentIndex == 2
                       ? FlutterFlowTheme.of(context).primary
-                      : const Color(0x8A000000),
+                      : FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
                 Text(
@@ -215,7 +218,7 @@ class _NavBarPageState extends State<NavBarPage> {
                   style: TextStyle(
                     color: currentIndex == 2
                         ? FlutterFlowTheme.of(context).primary
-                        : const Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).primaryText,
                     fontSize: 11.0,
                   ),
                 ),
@@ -227,19 +230,43 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.numbers,
+                  Icons.edit_note_sharp,
                   color: currentIndex == 3
                       ? FlutterFlowTheme.of(context).primary
-                      : const Color(0x8A000000),
+                      : FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
                 Text(
-                  'NumGen',
+                  'Notes',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: currentIndex == 3
                         ? FlutterFlowTheme.of(context).primary
-                        : const Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).primaryText,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.directions_car,
+                  color: currentIndex == 4
+                      ? FlutterFlowTheme.of(context).primary
+                      : FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+                Text(
+                  'Araçlar',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 4
+                        ? FlutterFlowTheme.of(context).primary
+                        : FlutterFlowTheme.of(context).primaryText,
                     fontSize: 11.0,
                   ),
                 ),

@@ -71,6 +71,62 @@ class SayiUretCall {
       ) as List?;
 }
 
+class AraclarCall {
+  static Future<ApiCallResponse> call({
+    String? search = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'araclar',
+      apiUrl: 'http://fatura.egenakliyat.com/online/server/action.php',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'araclist': "araclist",
+        'key': "test",
+        'search': search,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? araclar(dynamic response) => getJsonField(
+        response,
+        r'''$.araclar''',
+        true,
+      ) as List?;
+}
+
+class EvrakCall {
+  static Future<ApiCallResponse> call() async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'evrak',
+      apiUrl: 'http://fatura.egenakliyat.com/online/server/action.php',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'evrak': "app",
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? evrak(dynamic response) => getJsonField(
+        response,
+        r'''$.evrak''',
+        true,
+      ) as List?;
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
